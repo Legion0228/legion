@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  </head>
+<body class="bg-[#f7fafc] dark:bg-[#1a202c] transition-colors duration-300">
+    <!-- 在头部添加问候语 -->
+    <div class="text-center mb-6 opacity-0 translate-y-6 transition-all duration-500">
+        <h2 class="text-3xl font-bold text-pink-500 dark:text-pink-400">
+            <i class="fas fa-paw mr-2"></i>
+            乐老师 请多喝水
+        </h2>
+    </div>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汪汪饮水小助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes dog-breathe {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+        .dog-animation {
+            animation: dog-breathe 2s ease-in-out infinite;
+        }
+        @keyframes water-wave {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+        .water-wave {
+            animation: water-wave 1.2s ease-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#f7fafc] dark:bg-[#1a202c] transition-colors duration-300">
+    <!-- 主题切换 -->
+    <button id="themeToggle" class="fixed top-4 right-4 z-50 p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow-lg hover:scale-105 transition-transform">
+        <i class="fas fa-sun text-amber-500 dark:hidden"></i>
+        <i class="fas fa-moon text-indigo-400 hidden dark:inline"></i>
+    </button>
+
+    <main class="container mx-auto px-4 py-8 max-w-2xl">
+        <!-- 小狗动画 -->
+        <div class="mb-12 opacity-0 translate-y-6 transition-all duration-500">
+            <div class="relative w-32 h-32 mx-auto">
+                <div class="absolute inset-0 dog-animation">
+                    <!-- 小狗SVG图形 -->
+                    <svg class="w-full h-full text-[#63b3ed]" viewBox="0 0 100 100">
+                        <path fill="currentColor" d="M50 15C35 15 20 25 15 40c-5 15 0 30 15 35 15 5 30 0 35-15 5-15 0-30-15-35-5-5-10-5-15-5z"/>
+                        <circle cx="35" cy="35" r="5" fill="#fff"/>
+                        <circle cx="65" cy="35" r="5" fill="#fff"/>
+                    </svg>
+                </div>
+                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 water-wave w-16 h-16 bg-blue-200 rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- 饮水进度 -->
+        <section class="mb-8 opacity-0 translate-y-6 transition-all duration-500">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-tint mr-2 text-blue-400"></i>
+                    今日饮水进度
+                </h2>
+                <div class="flex items-center space-x-4">
+                    <div class="flex-1 h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-2/5 transition-all duration-500"></div>
+                    </div>
+                    <span class="text-blue-500 font-medium">i don't konw/2000ml</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 快捷操作 -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 opacity-0 translate-y-6 transition-all duration-500">
+            <button class="p-4 bg-blue-100 dark:bg-blue-900/20 rounded-xl hover:scale-105 transition-transform group">
+                <div class="w-8 h-8 mx-auto mb-2 relative">
+                    <i class="fas fa-paw text-blue-500 text-2xl absolute group-hover:scale-125 transition-transform"></i>
+                </div>
+                <p class="text-sm font-medium text-gray-800 dark:text-white">+100ml</p>
+            </button>
+            <button class="p-4 bg-green-100 dark:bg-green-900/20 rounded-xl hover:scale-105 transition-transform group">
+                <div class="w-8 h-8 mx-auto mb-2 relative">
+                    <i class="fas fa-bone text-green-500 text-2xl absolute group-hover:rotate-12 transition-transform"></i>
+                </div>
+                <p class="text-sm font-medium text-gray-800 dark:text-white">+250ml</p>
+               </button>
+            <button class="p-4 bg-purple-100 dark:bg-purple-900/20 rounded-xl hover:scale-105 transition-transform group">
+                <div class="w-8 h-8 mx-auto mb-2 relative">
+                    <i class="fas fa-bowl-food text-purple-500 text-2xl absolute group-hover:-translate-y-1 transition-transform"></i>
+                </div>
+                <p class="text-sm font-medium text-gray-800 dark:text-white">+500ml</p>
+            </button>
+            <button class="p-4 bg-pink-100 dark:bg-pink-900/20 rounded-xl hover:scale-105 transition-transform group">
+                <div class="w-8 h-8 mx-auto mb-2 relative">
+                    <i class="fas fa-cog text-pink-500 text-2xl absolute group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-sm font-medium text-gray-800 dark:text-white">自定义</p>
+            </button>
+        </section>
+
+        <!-- 饮水记录 -->
+        <section class="opacity-0 translate-y-6 transition-all duration-500">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-clock-rotate-left mr-2 text-blue-400"></i>
+                    今日记录
+                </h2>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-paw text-blue-400"></i>
+                            <span class="text-gray-600 dark:text-gray-300">不知道</span>
+                        </div>
+                        <span class="text-blue-500 font-medium">+？</span>
+                    </div>
+                    <!-- 更多记录项... -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="text-center space-y-2 opacity-0 translate-y-6 transition-all duration-500">
+            <p class="text-gray-600 dark:text-gray-400">
+                作者: 小吕
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        // 初始化主题
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.opacity-0').forEach(el => observer.observe(el));
+
+        // 按钮交互反馈
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.add('active:scale-95');
+                setTimeout(() => btn.classList.remove('active:scale-95'), 150);
+            });
+        });
+    </script>
+</body>
+</html>
